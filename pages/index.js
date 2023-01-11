@@ -10,7 +10,7 @@ export default function Home() {
 
   const [User, setUser] = useState()
   const gettodo = async () => {
-    const res = await fetch('http://jsonplaceholder.typicode.com/todos/1')
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
     // .then(response => response.json())
     // .then(json => console.log(json))
     const data = await res.json()
