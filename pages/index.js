@@ -2,10 +2,28 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
+import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const [User, setUser] = useState()
+  const gettodo = async () => {
+    const res = await fetch('http://jsonplaceholder.typicode.com/todos/1')
+    // .then(response => response.json())
+    // .then(json => console.log(json))
+    const data = await res.json()
+
+    console.log(data);
+    setUser(data)
+  }
+  useEffect(() => {
+    gettodo()
+
+
+  }, [])
+
   return (
     <>
       <Head>
@@ -15,6 +33,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        {JSON.stringify(User)}
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
